@@ -7,7 +7,9 @@
 <body>
     <h1>JSON Viewer</h1>
 
-    <button id="toggleButton">Toggle JSON</button>
+    <label for="jsonUrl">Enter JSON URL:</label>
+    <input type="text" id="jsonUrl" placeholder="Enter JSON URL">
+    <button id="fetchButton">Fetch JSON</button>
 
     <div id="jsonContainer" class="hidden">
         <pre id="jsonContent"></pre>

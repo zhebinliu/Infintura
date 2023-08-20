@@ -1,17 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const toggleButton = document.getElementById('toggleButton');
+    const fetchButton = document.getElementById('fetchButton');
+    const jsonUrlInput = document.getElementById('jsonUrl');
     const jsonContainer = document.getElementById('jsonContainer');
     const jsonContent = document.getElementById('jsonContent');
 
-    toggleButton.addEventListener('click', function() {
-        jsonContainer.classList.toggle('hidden');
-        if (!jsonContainer.classList.contains('hidden')) {
-            fetchJSON();
+    fetchButton.addEventListener('click', function() {
+        const jsonUrl = jsonUrlInput.value;
+        if (jsonUrl.trim() !== '') {
+            jsonContainer.classList.remove('hidden');
+            fetchJSONFromURL(jsonUrl);
         }
     });
 
-    function fetchJSON() {
-        fetch('sfdx-project.json')
+    function fetchJSONFromURL(url) {
+        fetch(url)
             .then(response => response.json())
             .then(data => {
                 const formattedJSON = JSON.stringify(data, null, 2);
@@ -19,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .catch(error => {
                 console.error('Error fetching JSON:', error);
-                jsonContent.textContent = 'Error loading JSON.';
+                jsonContent.textContent = 'Error loading JSON from URL.';
             });
     }
 });
