@@ -31,32 +31,29 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
     
-    function fetchReleaseDef(xmlPath) {
-        fetch(xmlPath)
+    function fetchReleaseDef(ymlPath) {
+        fetch(ymlPath)
             .then(response => response.text())
-            .then ( xmlData => {
-                console.log('file=>'+xmlPath)
-                xmlContent.textContent += xmlPath+'\n';
-                parseXML(xmlData);
+            .then ( ymlData => {
+                console.log('file=>'+ymlPath)
+                xmlContent.textContent += ymlPath+'\n';
+                parseYML(ymlData);
             })
             .catch(error => {
-                console.error('Error fetching XML:', error);
-                xmlContent.textContent = 'Error loading XML from URL.';
+                console.error('Error fetching YML:', error);
+                xmlContent.textContent = 'Error loading YML from URL.';
             });
     }
 
-    function parseXML(xmlData) {
-        const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(xmlData, 'application/xml');
+    function parseYML(ymlData) {
+        const parsedYAML = jsyaml.load(yamlData); 
+        const includeOnlyArtifacts = parsedYAML.includeOnlyArtifacts;
         console.log(xmlDoc)
-        const packageNodes = xmlDoc.querySelectorAll('includeOnlyArtifacts package');
-        let packagesList
-
-        if (packageNodes.length > 0) {
-            const packageNames = Array.from(packageNodes).map(node => node.textContent);
-            xmlContent.innerHTML += `<ul>${packageNames.map(name => `<li>${name}</li>`).join('')}</ul>`;
+        
+        if (Array.isArray(includeOnlyArtifacts) && includeOnlyArtifacts.length > 0) {
+            xmlContent.innerHTML = `<ul>${includeOnlyArtifacts.map(name => `<li>${name}</li>`).join('')}</ul>`;
         } else {
-            xmlContent.textContent += 'No packages found under includeOnlyArtifacts.';
+            xmlContent.textContent = 'No packages found under includeOnlyArtifacts.';
         }
 
     }
