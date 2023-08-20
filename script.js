@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function parseYML(ymlData) {
         const parsedYAML = jsyaml.load(ymlData); 
         const includeOnlyArtifacts = parsedYAML.includeOnlyArtifacts;
-        console.log(xmlDoc)
+        console.log(includeOnlyArtifacts)
         
         if (Array.isArray(includeOnlyArtifacts) && includeOnlyArtifacts.length > 0) {
             xmlContent.innerHTML = `<ul>${includeOnlyArtifacts.map(name => `<li>${name}</li>`).join('')}</ul>`;
