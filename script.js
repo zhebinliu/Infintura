@@ -48,9 +48,16 @@ document.addEventListener('DOMContentLoaded', function() {
     function parseXML(xmlData) {
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(xmlData, 'application/xml');
-        
-        const formattedXML = new XMLSerializer().serializeToString(xmlDoc);
-        console.log(formattedXML)
-        xmlContent.textContent += formattedXML+ '\n';
+
+        const packageNodes = xmlDoc.querySelectorAll('includeOnlyArtifacts package');
+        let packagesList
+
+        if (packageNodes.length > 0) {
+            const packageNames = Array.from(packageNodes).map(node => node.textContent);
+            xmlContent.innerHTML = `<ul>${packageNames.map(name => `<li>${name}</li>`).join('')}</ul>`;
+        } else {
+            xmlContent.textContent = 'No packages found under includeOnlyArtifacts.';
+        }
+
     }
 });
