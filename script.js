@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function parseXML(xmlData) {
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(xmlData, 'application/xml');
-
+        console.log(xmlDoc)
         const packageNodes = xmlDoc.querySelectorAll('includeOnlyArtifacts package');
         let packagesList
 
