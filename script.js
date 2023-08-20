@@ -38,7 +38,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('file=>'+xmlPath)
                 xmlContent.textContent += xmlPath+'\n';
                 console.log(xmlData)
-                parseXML(xmlData);
+                xmlContent.textContent += xmlData+ '\n';
+                //parseXML(xmlData);
             })
             .catch(error => {
                 console.error('Error fetching XML:', error);
