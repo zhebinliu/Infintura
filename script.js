@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => response.text())
             .then ( ymlData => {
                 console.log('file=>'+ymlPath)
-                xmlContent.innerHTML += `<h3>ymlPath</h3>`;
+                xmlContent.textContent += ymlPath`;
                 parseYML(ymlData);
             })
             .catch(error => {
@@ -51,7 +51,10 @@ document.addEventListener('DOMContentLoaded', function() {
         //console.log(includeOnlyArtifacts)
         
         if (Array.isArray(includeOnlyArtifacts) && includeOnlyArtifacts.length > 0) {
-            xmlContent.innerHTML += `<ul>${includeOnlyArtifacts.map(name => `<li>${name}</li>`).join('')}</ul>`;
+            includeOnlyArtifacts.forEach((package)=> {
+                xmlContent.textContent += package+'\n';
+            });
+            //xmlContent.innerHTML += `<ul>${includeOnlyArtifacts.map(name => `<li>${name}</li>`).join('')}</ul>`;
         } else {
             xmlContent.textContent = 'No packages found under includeOnlyArtifacts.';
         }
