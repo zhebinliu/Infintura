@@ -54,9 +54,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (packageNodes.length > 0) {
             const packageNames = Array.from(packageNodes).map(node => node.textContent);
-            xmlContent.innerHTML = `<ul>${packageNames.map(name => `<li>${name}</li>`).join('')}</ul>`;
+            xmlContent.innerHTML += `<ul>${packageNames.map(name => `<li>${name}</li>`).join('')}</ul>`;
         } else {
-            xmlContent.textContent = 'No packages found under includeOnlyArtifacts.';
+            xmlContent.textContent += 'No packages found under includeOnlyArtifacts.';
         }
 
     }
