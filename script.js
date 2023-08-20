@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
         outputContainer.classList.toggle('hidden');
         if (!outputContainer.classList.contains('hidden')) {
             fetchJSON();
-            fetchReleaseDef('release-definitions/orde-cl.yml');
-            fetchReleaseDef('release-definitions/orde-loan-servicing.yml');
+            fetchReleaseDef('releasedefinitions/orde-cl.yml');
+            fetchReleaseDef('releasedefinitions/orde-loan-servicing.yml');
         }
     });
 
