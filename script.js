@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => response.text())
             .then ( xmlData => {
                 console.log('file=>'+xmlPath)
+                xmlContent.textContent += xmlPath+'\n';
                 console.log(xmlData)
                 parseXML(xmlData);
             })
@@ -50,6 +51,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const xmlDoc = parser.parseFromString(xmlData, 'application/xml');
         
         const formattedXML = new XMLSerializer().serializeToString(xmlDoc);
-        xmlContent.textContent = formattedXML;
+        xmlContent.textContent += formattedXML+ '\n';
     }
 });
