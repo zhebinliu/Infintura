@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => response.text())
             .then ( ymlData => {
                 console.log('file=>'+ymlPath)
-                xmlContent.textContent += ymlPath;
+                xmlContent.textContent += ymlPath +'\n';
                 parseYML(ymlData);
             })
             .catch(error => {
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (Array.isArray(includeOnlyArtifacts) && includeOnlyArtifacts.length > 0) {
             includeOnlyArtifacts.forEach((package)=> {
-                xmlContent.textContent += package+'\n';
+                xmlContent.textContent += package +'\n';
             });
             //xmlContent.innerHTML += `<ul>${includeOnlyArtifacts.map(name => `<li>${name}</li>`).join('')}</ul>`;
         } else {
