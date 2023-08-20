@@ -1,12 +1,16 @@
 document.addEventListener('DOMContentLoaded', function() {
     const toggleButton = document.getElementById('toggleButton');
-    const jsonContainer = document.getElementById('jsonContainer');
+    const outputContainer = document.getElementById('outputContainer');
     const jsonContent = document.getElementById('jsonContent');
+    const xmlContainer = document.getElementById('xmlContainer');
+    const xmlContent = document.getElementById('xmlContent');
 
     toggleButton.addEventListener('click', function() {
-        jsonContainer.classList.toggle('hidden');
-        if (!jsonContainer.classList.contains('hidden')) {
+        outputContainer.classList.toggle('hidden');
+        if (!outputContainer.classList.contains('hidden')) {
             fetchJSON();
+            fetchReleaseDef('release-definitions/orde-cl.xml');
+            fetchReleaseDef('release-definitions/orde-loan-servicing.xml');
         }
     });
 
@@ -25,5 +29,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Error fetching JSON:', error);
                 jsonContent.textContent = 'Error loading JSON.';
             });
+    }
+    
+    function fetchReleaseDef(xmlPath) {
+        fetch(xmlPath)
+            .then(response => response.text())
+            .then ( xmlData => {
+                parseXML(xmlData);
+            })
+            .catch(error => {
+                console.error('Error fetching XML:', error);
+                xmlContent.textContent = 'Error loading XML from URL.';
+            });
+    }
+
+    function parseXML(xmlData) {
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(xmlData, 'application/xml');
+        
+        const formattedXML = new XMLSerializer().serializeToString(xmlDoc);
+        xmlContent.textContent = formattedXML;
     }
 });
