@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function parseYML(ymlData) {
-        const parsedYAML = jsyaml.load(yamlData); 
+        const parsedYAML = jsyaml.load(ymlData); 
         const includeOnlyArtifacts = parsedYAML.includeOnlyArtifacts;
         console.log(xmlDoc)
         
