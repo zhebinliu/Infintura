@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then ( ymlData => {
                 console.log('file=>'+ymlPath)
                 xmlContent.textContent += ymlPath+'\n';
+                console.log(ymlData)
                 parseYML(ymlData);
             })
             .catch(error => {
