@@ -1,0 +1,22 @@
+# release-config for loan-servicing
+
+releaseName: orde-loan-servicing
+excludeAllPackageDependencies: true 
+includeOnlyArtifacts:
+  - statement-notification-automation
+  - settlement-workflow-automation
+  - equifax-credit-report-search
+  - loan-collateral-checker
+  - customer-vulnerability-reporter
+  - campaign-sms-management
+  - loan-servicing-ui
+  - loan-charges
+releasedefinitionProperties:
+  skipIfAlreadyInstalled: true
+  usePackageDiffDeploymentMode: true
+  promotePackagesBeforeDeploymentToOrg: prod
+  changelog:
+    workItemFilters:
+      -  (ODD|OIBCR|OSD)-[0-9]{3,4}
+    workItemUrl: https://wingategroup.atlassian.net/browse
+    limit: 30

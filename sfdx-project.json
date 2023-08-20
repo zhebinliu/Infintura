@@ -1,0 +1,360 @@
+{
+    "packageDirectories": [
+      {
+        "path": "src/common-shared/orgshape",
+        "package": "orgshape",
+        "versionNumber": "1.0.5.NEXT",
+        "alwaysDeploy": true
+      },
+      {
+        "path": "src/common-shared/utilities",
+        "package": "utilities",
+        "versionNumber": "1.0.0.NEXT"
+      },
+      {
+        "path": "src/common-shared/core-objects-duplicate-management",
+        "package": "core-objects-duplicate-management",
+        "versionNumber": "1.0.0.NEXT"
+      },
+      {
+        "path": "src/org-support/gift-register",
+        "package": "gift-register",
+        "versionNumber": "1.0.0.NEXT"
+      },
+      {
+        "path": "src/org-support/breach-register",
+        "package": "breach-register",
+        "versionNumber": "1.0.0.NEXT"
+      },
+      {
+        "path": "src/org-support/training-register",
+        "package": "training-register",
+        "versionNumber": "1.0.0.NEXT"
+      },
+      {
+        "path": "src/org-support/aba-file-generator",
+        "package": "aba-file-generator",
+        "versionNumber": "1.0.0.NEXT"
+      },
+      {
+        "path": "src/org-support/call-management",
+        "package": "call-management",
+        "versionNumber": "1.0.3.NEXT"
+      },
+      {
+        "path": "src/org-support/batch-log-management",
+        "package": "batch-log-management",
+        "versionNumber": "1.0.0.NEXT",
+        "versionDescription": "Deletes batches of cl logs"
+      },
+      {
+        "path": "src/unpackaged",
+        "package": "orde-unpackaged",
+        "default": true,
+        "type": "diff",
+        "versionNumber": "1.1.0.NEXT",
+        "dependencies": [
+          {
+            "package": "CL Utilities"
+          },
+          {
+            "package": "CL Common"
+          },
+          {
+            "package": "CL Staging"
+          },
+          {
+            "package": "Conga Composer"
+          },
+          {
+            "package": "CL Integration Framework"
+          },
+          {
+            "package": "CL Integrations"
+          },
+          {
+            "package": "CL Notify"
+          },
+          {
+            "package": "CL Collections"
+          },
+          {
+            "package": "CL FileGen"
+          },
+          {
+            "package": "Q2 Origination"
+          },
+          {
+            "package": "Q2 Loan Servicing"
+          },
+          {
+            "package": "Q2 Marketplace"
+          },
+          {
+            "package": "Skuid"
+          },
+          {
+            "package": "CL Originate Skuid Extension"
+          },
+          {
+            "package": "Conga Batch"
+          }
+        ]
+      },
+      {
+        "path": "src/cloudlending-configs/rendered-field-records",
+        "package": "cl-rendered-fields",
+        "type": "data",
+        "versionNumber": "2.0.0.NEXT",
+        "preDeploymentScript": "scripts/pushSkuidPages.sh"
+      },
+      {
+        "path": "src/cloudlending-configs/integration-framework",
+        "package": "cl-integration-framework",
+        "type": "data",
+        "versionNumber": "1.0.0.NEXT",
+        "aliasfy": true
+      },
+      {
+        "path": "src/cloudlending-configs/rules",
+        "package": "cl-rules",
+        "type": "data",
+        "versionNumber": "1.0.0.NEXT"
+      },
+      {
+        "path": "src/cloudlending-configs/origination-configuration",
+        "package": "cl-origination-configuration",
+        "type": "data",
+        "versionNumber": "1.0.0.NEXT",
+        "postDeploymentScript": "scripts/seedLoanData.sh"
+      },
+      {
+        "path": "src/cloudlending-configs/servicing-configuration/stage-1",
+        "package": "cl-servicing-stage-1",
+        "type": "data",
+        "versionNumber": "1.0.0.NEXT"
+      },
+      {
+        "path": "src/cloudlending-configs/servicing-configuration/stage-2",
+        "package": "cl-servicing-stage-2",
+        "type": "data",
+        "versionNumber": "1.0.0.NEXT",
+        "postDeploymentScript": "scripts/updateDayMonthRecords.sh"
+      },
+      {
+        "path": "src/cloudlending-configs/dag",
+        "package": "cl-dag",
+        "type": "data",
+        "versionNumber": "1.0.0.NEXT"
+      },
+      {
+        "path": "src/cloudlending-configs/rate-cards/rate-card-setup",
+        "package": "cl-rate-cards",
+        "type": "data",
+        "versionNumber": "2.0.0.NEXT"
+      },
+      {
+        "path": "src/cloudlending-configs/rate-cards/product-rate-card-association",
+        "package": "cl-rate-cards-product-association",
+        "type": "data",
+        "versionNumber": "1.0.0.NEXT"
+      },
+      {
+        "path": "src/cloudlending-configs/approval-authority",
+        "package": "cl-approval-authority",
+        "type": "data",
+        "versionNumber": "1.0.0.NEXT"
+      },
+      {
+        "path": "src/cloudlending-configs/departments",
+        "package": "cl-departments",
+        "type": "data",
+        "versionNumber": "1.0.0.NEXT"
+      },
+      {
+        "path": "src/cloudlending-configs/collection-configuration",
+        "package": "cl-collection-configuration",
+        "type": "data",
+        "versionNumber": "1.0.0.NEXT"
+      },
+      {
+        "path": "src/cloudlending-configs/collaterals",
+        "package": "cl-collaterals",
+        "type": "data",
+        "versionNumber": "1.0.0.NEXT"
+      },
+      {
+        "path": "src/org-support/clone-records",
+        "package": "clone-records",
+        "type": "data",
+        "versionNumber": "1.0.0.NEXT"
+      },
+      {
+        "path": "src/sales/broker-survey-management",
+        "package": "broker-survey-management",
+        "versionNumber": "1.0.0.NEXT"
+      },
+      {
+        "path": "src/sales/sales-channels",
+        "package": "sales-channels",
+        "versionNumber": "1.9.0.NEXT"
+      },
+      {
+        "path": "src/sales/sales-ui",
+        "package": "sales-ui",
+        "versionNumber": "1.4.0.NEXT",
+        "buildCollection": [
+          "orgshape"
+        ]
+      },
+      {
+        "path": "src-conga-doc-config",
+        "package": "conga-doc-config",
+        "type": "data",
+        "versionNumber": "1.0.0.NEXT"
+      },
+      {
+        "path": "src/application-permissions",
+        "package": "application-permissions",
+        "versionNumber": "1.0.3.NEXT",
+        "versionDescription": "Permissions for applications"
+      },
+      {
+        "path": "src-access-management",
+        "package": "src-access-management",
+        "reconcileProfiles": true,
+        "versionNumber": "1.0.0.NEXT"
+      },
+      {
+        "path": "src-access-management-portal",
+        "package": "src-access-management-portal",
+        "reconcileProfiles": true,
+        "skipDeployOnOrgs": [
+          "staging",
+          "prod"
+        ],
+        "ignoreOnStage": [
+          "validate"
+        ],
+        "versionNumber": "1.0.0.NEXT"
+      },
+      {
+        "path": "src-ui",
+        "package": "src-ui",
+        "versionNumber": "1.0.0.NEXT"
+      },
+      {
+        "path": "src/loan-servicing/loan-servicing-ui",
+        "package": "loan-servicing-ui",
+        "versionNumber": "1.0.0.NEXT"
+      },
+      {
+        "path": "src/loan-servicing/statement-notification-automation",
+        "package": "statement-notification-automation",
+        "versionNumber": "1.0.2.NEXT"
+      },
+      {
+        "path": "src/loan-servicing/settlement-workflow-automation",
+        "package": "settlement-workflow-automation",
+        "versionNumber": "1.0.1.NEXT"
+      },
+      {
+        "path": "src/loan-servicing/equifax-credit-report-search",
+        "package": "equifax-credit-report-search",
+        "versionNumber": "1.0.0.NEXT"
+      },
+      {
+        "path": "src/loan-servicing/loan-collateral-checker",
+        "package": "loan-collateral-checker",
+        "versionNumber": "1.0.0.NEXT"
+      },
+      {
+        "path": "src/loan-servicing/customer-vulnerability-reporter",
+        "package": "customer-vulnerability-reporter",
+        "versionNumber": "1.0.3.NEXT",
+        "versionDescription": "Reporting customer vulnerability on person accounts"
+      },
+      {
+        "path": "src/loan-servicing/campaign-sms-management",
+        "package": "campaign-sms-management",
+        "versionNumber": "1.0.0.NEXT"
+      },
+      {
+        "path": "src/org-support/sandbox-refresh-activities",
+        "package": "sandbox-post-refresh-activities",
+        "versionNumber": "1.0.0.NEXT",
+        "versionDescription": "This package is responsible for running post sandbox refresh activities automated through apex code run"
+      },
+      {
+        "path": "src/credit/application-assessment",
+        "package": "application-assessment",
+        "versionNumber": "1.0.1.NEXT"
+      },
+      {
+        "path": "src/distribution-permissions",
+        "package": "distribution-permissions",
+        "versionNumber": "1.0.4.NEXT",
+        "default": false,
+        "versionDescription": "This permission set is responsible to giving access to broker related activities"
+      },
+      {
+        "path": "src-env-specific-post",
+        "package": "env-specific-post",
+        "versionNumber": "1.0.0.NEXT",
+        "aliasfy": true,
+        "alwaysDeploy": true
+      },
+      {
+        "path": "src/loan-servicing/loan-charges",
+        "package": "loan-charges",
+        "versionNumber": "1.0.0.NEXT",
+        "default": false,
+        "versionDescription": "This package includes the loan charge related dev"
+      }
+    ],
+    "pushPackageDirectoriesSequentially": true,
+    "name": "orde-financials",
+    "namespace": "",
+    "sfdcLoginUrl": "https://login.salesforce.com",
+    "sourceApiVersion": "55.0",
+    "packageAliases": {
+      "CL Common": "04t2L000000IyNcQAK",
+      "CL Staging": "04t1R000001E4b3QAC",
+      "Conga Composer": "04tf2000002FhY6AAK",
+      "CL Originate Skuid Extension": "04t4M0000004TlfQAE",
+      "CL Integration Framework": "04t6g000008SgUjAAK",
+      "Conga Batch": "04t2E000001fDFTQA2",
+      "Q2 Loan Servicing": "04t0o000003FTTUAA4",
+      "CL Integrations": "04t3j000000hdEvAAI",
+      "CL Notify": "04t2I000000MhRAQA0",
+      "Q2 Origination": "04t3k000001YPFGAA4",
+      "Skuid": "04t4A000000MnNAQA0",
+      "Q2 Marketplace": "04t4R000001lcY0QAI",
+      "CL FileGen": "04t4w0000004449AAA",
+      "b2bmaIntegration": "04t5G000004F39PQAS",
+      "CL Utilities": "04t6S000000gpYvQAI",
+      "CL Collections": "04t5b000001rNelAAE",
+      "call-management": "0Ho8w000000003UCAQ",
+      "sales-channels": "0Ho8w000000003ZCAQ",
+      "customer-vulnerability-reporter": "0Ho8w000000003eCAA",
+      "batch-log-management": "0Ho8w000000003oCAA",
+      "broker-survey-management": "0Ho8w000000004NCAQ",
+      "statement-notification-automation": "0Ho8w000000004XCAQ",
+      "settlement-workflow-automation": "0Ho8w000000004hCAA",
+      "equifax-credit-report-search": "0Ho8w000000005BCAQ",
+      "sandbox-post-refresh-activities": "0Ho8w000000005LCAQ",
+      "application-permissions": "0Ho8w000000006iCAA",
+      "loan-collateral-checker": "0Ho8w000000006nCAA",
+      "application-assessment": "0Ho8w000000007CCAQ",
+      "distribution-permissions": "0Ho8w000000007qCAA",
+      "campaign-sms-management": "0Ho8w0000000098CAA",
+      "loan-charges": "0Ho8w000000009ICAQ"
+    },
+    "plugins": {
+      "sfpowerscripts": {
+        "ignoreFiles": {
+          "build": ".forceignores/.buildignore"
+        }
+      }
+    }
+  }
