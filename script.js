@@ -14,8 +14,12 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch('sfdx-project.json')
             .then(response => response.json())
             .then(data => {
-                const formattedJSON = JSON.stringify(data, null, 2);
-                jsonContent.textContent = formattedJSON;
+                jsonContent.textContent = 'Package list \n';
+                data.packageDirectories.forEach((package)=> {
+                    jsonContent.textContent += package.package+'\n';
+                });
+                //const formattedJSON = JSON.stringify(data.packageDirectories, null, 2);
+                //jsonContent.textContent = formattedJSON;
             })
             .catch(error => {
                 console.error('Error fetching JSON:', error);
