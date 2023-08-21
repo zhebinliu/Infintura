@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
         outputContainer.classList.toggle('hidden');
         if (!outputContainer.classList.contains('hidden')) {
             fetchJSON();
-            const reldefs = await readRelDefFolder('releasedefinitions');
+            const reldefs = readRelDefFolder('releasedefinitions');
             console.log(reldefs)
             for( const [index, value] of reldefs.tree){
                 const filePath = value.path;
