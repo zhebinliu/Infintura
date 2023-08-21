@@ -42,10 +42,12 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch('sfdx-project.json')
             .then(response => response.json())
             .then(data => {
-                jsonContent.textContent = 'Package list \n';
+                jsonContent.innerHTML = '<h3>Packages</h3>';
+                jsonContent.innerHTML += '<table><tr><th>Packages</th><th>Domain</th></tr>';
                 data.packageDirectories.forEach((package)=> {
-                    jsonContent.textContent += package.package+'\n';
+                    jsonContent.innerHTML += `<tr><td>${package}</td><td></td></tr>`;
                 });
+                jsonContent.innerHTML += `</table>`;
                 //const formattedJSON = JSON.stringify(data.packageDirectories, null, 2);
                 //jsonContent.textContent = formattedJSON;
             })
