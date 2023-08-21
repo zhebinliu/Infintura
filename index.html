@@ -7,7 +7,7 @@
 <body>
     <h1>Package Release Manager</h1>
 
-    <button id="toggleButton">Toggle JSON</button>
+    <button id="toggleButton">Read sfdx-project.json</button>
 
     <div id="outputContainer" class="hidden">
         <div class="row">
@@ -15,7 +15,8 @@
                 <pre id="jsonContent"></pre>
             </div>
             <div class="column">
-                <div class="tab">
+                <span>Release Definitions</span>
+                <div class="tab" id="tab-navi">
                     <button class="tablinks" onclick="openYaml(event, 'orde-cl')">orde-cl</button>
                     <button class="tablinks" onclick="openYaml(event, 'orde-loan-servicing')">orde-loan-servicing</button>
                 </div>
@@ -34,6 +35,8 @@
     </div>
 
     <script type="text/javascript" src="https://unpkg.com/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mocha/1.0.2/package/lib/browser/fs.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/path.js/0.8.4/path.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

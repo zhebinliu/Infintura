@@ -4,15 +4,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const jsonContent = document.getElementById('jsonContent');
     const ordeClContent = document.getElementById('orde-cl-context');
     const ordeLoanServicingContent = document.getElementById('orde-loan-servicing-context');
+    const tabNavi = document.getElementById('tab-navi');
 
     toggleButton.addEventListener('click', function() {
         outputContainer.classList.toggle('hidden');
         if (!outputContainer.classList.contains('hidden')) {
             fetchJSON();
+            readRelDefFolder();
             fetchReleaseDef('releasedefinitions/orde-cl.yml', ordeClContent);
             fetchReleaseDef('releasedefinitions/orde-loan-servicing.yml', ordeLoanServicingContent);
         }
     });
+
+    function readRelDefFolder() {
+        const walkSync = (dir, filelist = []) => {
+            const files = fs.readdirSync(dir);
+            console.log(files);
+        }
+    }
 
     function fetchJSON() {
         fetch('sfdx-project.json')
