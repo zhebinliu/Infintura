@@ -10,16 +10,20 @@ document.addEventListener('DOMContentLoaded', function() {
         outputContainer.classList.toggle('hidden');
         if (!outputContainer.classList.contains('hidden')) {
             fetchJSON();
-            readRelDefFolder('releasedefinitions');
+            const reldefs = readRelDefFolder('releasedefinitions');
+            console.log(reldefs)
             fetchReleaseDef('releasedefinitions/orde-cl.yml', ordeClContent);
             fetchReleaseDef('releasedefinitions/orde-loan-servicing.yml', ordeLoanServicingContent);
         }
     });
 
     function readRelDefFolder(dir) {
-        const walkSync = (dir, filelist = []) => {
-            const files = fs.readdirSync(dir);
-            console.log(files);
+        const url = `https://api.github.com/repos/zhebinliu/infintura/git/trees/main`;
+        const list = await fetch(url).then(res => res.json());
+        const dir = list.tree.find(node => node.path === dir);
+        if (dir) {
+            const list = await fetch(dir.url).then(res => res.json());
+            return list.tree.map(node => node.path);
         }
     }
 
