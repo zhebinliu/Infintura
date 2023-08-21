@@ -42,8 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 jsonContent.innerHTML = '<h3>Packages</h3>';
                 const tbl =document.createElement('table');
-                tbl.style.width = '100px';
-                tbl.style.border = '1px solid black';
+                tbl.className = 'styled-table'
 
                 data.packageDirectories.forEach((package)=> {
                     const tr = tbl.insertRow();
