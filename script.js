@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     td.appendChild(document.createTextNode(`${package.package}`));
                     td.style.border = '1px solid black';
                 });
-                body.appendChild(tbl);
+                jsonContent.appendChild(tbl);
                 //const formattedJSON = JSON.stringify(data.packageDirectories, null, 2);
                 //jsonContent.textContent = formattedJSON;
             })
