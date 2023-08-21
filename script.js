@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
             fetchJSON();
             const reldefs = readRelDefFolder('releasedefinitions');
             console.log(reldefs)
-            console.log(reldefs.tree)
-            for( const [index, value] of reldefs.tree){
+            console.log(reldefs[0])
+            for( const [index, value] of reldefs){
                 const filePath = value.path;
                 tabContainer.innerHTML += `<div id="${filePath.replace(/\.[^/.]+$/, "")}" class="tabcontent"><h3>${filePath.replace(/\.[^/.]+$/, "")}</h3><pre id="${'tab'+index}"></pre></div>`
                 const tempTabContent = document.getElementById('tab'+index);
