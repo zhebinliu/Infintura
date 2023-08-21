@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 data.packageDirectories.forEach((package)=> {
                     const tr = tbl.insertRow();
-                    const td = tr.insertCell;
+                    const td = tr.insertCell();
                     td.appendChild(document.createTextNode(`${package.package}`));
                     td.style.border = '1px solid black';
                 });
