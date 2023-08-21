@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const ordeClContent = document.getElementById('orde-cl-context');
     const ordeLoanServicingContent = document.getElementById('orde-loan-servicing-context');
     const tabNavi = document.getElementById('tab-navi');
+    const tabContainer = document.getElementById('tabContainer');
 
     toggleButton.addEventListener('click', function() {
         outputContainer.classList.toggle('hidden');
@@ -12,8 +13,13 @@ document.addEventListener('DOMContentLoaded', function() {
             fetchJSON();
             const reldefs = readRelDefFolder('releasedefinitions');
             console.log(reldefs)
-            fetchReleaseDef('releasedefinitions/orde-cl.yml', ordeClContent);
-            fetchReleaseDef('releasedefinitions/orde-loan-servicing.yml', ordeLoanServicingContent);
+            for( const [index, value] of reldefs){
+                const filePath = value.path;
+                tabContainer.innerHTML += `<div id="${filePath.replace(/\.[^/.]+$/, "")}" class="tabcontent"><h3>${filePath.replace(/\.[^/.]+$/, "")}</h3><pre id="${'tab'+index}"></pre></div>`
+                const tempTabContent = document.getElementById('tab'+index);
+                fetchReleaseDef('releasedefinitions/'+filePath, tempTabContent);
+            }
+
         }
     });
 
@@ -22,8 +28,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const list = await fetch(url).then(res => res.json());
         const dir = list.tree.find(node => node.path === directory);
         if (dir) {
-            const list = await fetch(dir.url).then(res => res.json());
-            return list.tree.map(node => node.path);
+            return await fetch(dir.url).then(res => res.json());
+            //return list.tree.map(node => node.path);
         }
     }
 
