@@ -43,10 +43,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 jsonContent.innerHTML = '<h3>Packages</h3>';
                 const tbl =document.createElement('table');
                 tbl.className = 'styled-table'
+                var header = tbl.createTHead();
+                var row = header.insertRow(0);
+                var cell1 = row.insertCell(0);
+                cell1.textContent = 'Package';
+                var cell2 = row.insertCell(1);
+                cell2.textContent = 'Domain';
 
                 data.packageDirectories.forEach((package)=> {
                     const tr = tbl.insertRow();
                     const td = tr.insertCell();
+                    const td2 = tr.insertCell();
                     td.appendChild(document.createTextNode(`${package.package}`));
                     td.style.border = '1px solid black';
                 });
