@@ -14,12 +14,14 @@ document.addEventListener('DOMContentLoaded', function() {
             const reldefs = readRelDefFolder('releasedefinitions');
             console.log(reldefs)
             console.log(reldefs[0])
+            tabNavi.innerHTML = ''
             const fileArr = ['orde-cl.yml','orde-loan-servicing.yml']
             for( const index in fileArr){
                 const filePath = fileArr[index];
-                tabNavi.innerHTML += `<button class="tablinks" onclick="openYaml(event, '${filePath.replace(/\.[^/.]+$/, "")}')">${filePath.replace(/\.[^/.]+$/, "")}</button>`
-                tabContainer.innerHTML += `<div id="${filePath.replace(/\.[^/.]+$/, "")}" class="tabcontent"><pre id="${'tab'+index}"></pre></div>`
-                const tempTabContent = document.getElementById('tab'+index);
+                const tabName = filePath.replace(/\.[^/.]+$/, "")
+                tabNavi.innerHTML += `<button class="tablinks" onclick="openYaml(event, '${tabName}')">${tabName}</button>`
+                tabContainer.innerHTML += `<div id="${tabName}" class="tabcontent"><pre id="${'tab-'+tabName}"></pre></div>`
+                const tempTabContent = document.getElementById('tab-'+tabName);
                 fetchReleaseDef('releasedefinitions/'+filePath, tempTabContent);
             }
 
