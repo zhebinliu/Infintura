@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
             for( const index in fileArr){
                 const filePath = fileArr[index];
                 tabNavi.innerHTML += `<button class="tablinks" onclick="openYaml(event, '${filePath.replace(/\.[^/.]+$/, "")}')">${filePath.replace(/\.[^/.]+$/, "")}</button>`
-                tabContainer.innerHTML += `<div id="${filePath.replace(/\.[^/.]+$/, "")}" class="tabcontent"><h3>${filePath.replace(/\.[^/.]+$/, "")}</h3><pre id="${'tab'+index}"></pre></div>`
+                tabContainer.innerHTML += `<div id="${filePath.replace(/\.[^/.]+$/, "")}" class="tabcontent"><pre id="${'tab'+index}"></pre></div>`
                 const tempTabContent = document.getElementById('tab'+index);
                 fetchReleaseDef('releasedefinitions/'+filePath, tempTabContent);
             }
@@ -70,10 +70,11 @@ document.addEventListener('DOMContentLoaded', function() {
     function parseYML(ymlData, container) {
         const parsedYAML = jsyaml.load(ymlData); 
         const includeOnlyArtifacts = parsedYAML.includeOnlyArtifacts;
+        container.innerHTML = ''
         //console.log(includeOnlyArtifacts)
         if (Array.isArray(includeOnlyArtifacts) && includeOnlyArtifacts.length > 0) {
             includeOnlyArtifacts.forEach((package)=> {
-                container.textContent += package +'\n';
+                container.innerHTML += `<div>${package}</div>`;
             });
             //xmlContent.innerHTML += `<ul>${includeOnlyArtifacts.map(name => `<li>${name}</li>`).join('')}</ul>`;
         } else {
