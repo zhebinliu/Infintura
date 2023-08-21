@@ -10,13 +10,13 @@ document.addEventListener('DOMContentLoaded', function() {
         outputContainer.classList.toggle('hidden');
         if (!outputContainer.classList.contains('hidden')) {
             fetchJSON();
-            readRelDefFolder();
+            readRelDefFolder('releasedefinitions');
             fetchReleaseDef('releasedefinitions/orde-cl.yml', ordeClContent);
             fetchReleaseDef('releasedefinitions/orde-loan-servicing.yml', ordeLoanServicingContent);
         }
     });
 
-    function readRelDefFolder() {
+    function readRelDefFolder(dir) {
         const walkSync = (dir, filelist = []) => {
             const files = fs.readdirSync(dir);
             console.log(files);
