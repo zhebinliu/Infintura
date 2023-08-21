@@ -2,15 +2,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const toggleButton = document.getElementById('toggleButton');
     const outputContainer = document.getElementById('outputContainer');
     const jsonContent = document.getElementById('jsonContent');
-    const xmlContainer = document.getElementById('xmlContainer');
-    const xmlContent = document.getElementById('xmlContent');
+    const ordeClContent = document.getElementById('orde-cl-context');
+    const ordeLoanServicingContent = document.getElementById('orde-loan-servicing-context');
 
     toggleButton.addEventListener('click', function() {
         outputContainer.classList.toggle('hidden');
         if (!outputContainer.classList.contains('hidden')) {
             fetchJSON();
-            fetchReleaseDef('releasedefinitions/orde-cl.yml');
-            fetchReleaseDef('releasedefinitions/orde-loan-servicing.yml');
+            fetchReleaseDef('releasedefinitions/orde-cl.yml', ordeClContent);
+            fetchReleaseDef('releasedefinitions/orde-loan-servicing.yml', ordeLoanServicingContent);
         }
     });
 
@@ -31,13 +31,13 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
     
-    function fetchReleaseDef(ymlPath) {
+    function fetchReleaseDef(ymlPath, container) {
         fetch(ymlPath)
             .then(response => response.text())
             .then ( ymlData => {
                 console.log('file=>'+ymlPath)
-                xmlContent.textContent += ymlPath +'\n';
-                parseYML(ymlData);
+                container.textContent += ymlPath +'\n';
+                parseYML(ymlData, container);
             })
             .catch(error => {
                 console.error('Error fetching YML:', error);
@@ -45,20 +45,17 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
 
-    function parseYML(ymlData) {
+    function parseYML(ymlData, container) {
         const parsedYAML = jsyaml.load(ymlData); 
         const includeOnlyArtifacts = parsedYAML.includeOnlyArtifacts;
         //console.log(includeOnlyArtifacts)
-        
         if (Array.isArray(includeOnlyArtifacts) && includeOnlyArtifacts.length > 0) {
-            const tableRows = includeOnlyArtifacts.map(package => `<tr><td>${package}</td></tr>`).join('');
-            xmlContent.innerHTML += `<table>${tableRows}</table>`;
-            //includeOnlyArtifacts.forEach((package)=> {
-            //    xmlContent.textContent += package +'\n';
-            //});
+            includeOnlyArtifacts.forEach((package)=> {
+                container.textContent += package +'\n';
+            });
             //xmlContent.innerHTML += `<ul>${includeOnlyArtifacts.map(name => `<li>${name}</li>`).join('')}</ul>`;
         } else {
-            xmlContent.textContent = 'No packages found under includeOnlyArtifacts.';
+            container.textContent = 'No packages found under includeOnlyArtifacts.';
         }
 
     }

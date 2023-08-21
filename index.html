@@ -15,7 +15,19 @@
                 <pre id="jsonContent"></pre>
             </div>
             <div class="column">
-                <pre id="xmlContent"></pre>
+                <div class="tab">
+                    <button class="tablinks" onclick="openYaml(event, 'orde-cl')">London</button>
+                    <button class="tablinks" onclick="openYaml(event, 'orde-loan-servicing')">Paris</button>
+                </div>
+                <div id="orde-cl" class="tabcontent">
+                    <h3>orde-cl</h3>
+                    <pre id="orde-cl-context"></pre>
+                </div>
+                  
+                <div id="orde-loan-servicing" class="tabcontent">
+                    <h3>orde-loan-servicing</h3>
+                    <pre id="orde-loan-servicing-context"></pre>
+                </div>
             </div>
         </div>
         
