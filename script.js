@@ -11,9 +11,9 @@ document.addEventListener('DOMContentLoaded', function() {
         outputContainer.classList.toggle('hidden');
         if (!outputContainer.classList.contains('hidden')) {
             fetchJSON();
-            const reldefs = readRelDefFolder('releasedefinitions');
+            const reldefs = await readRelDefFolder('releasedefinitions');
             console.log(reldefs)
-            for( const [index, value] of reldefs){
+            for( const [index, value] of reldefs.tree){
                 const filePath = value.path;
                 tabContainer.innerHTML += `<div id="${filePath.replace(/\.[^/.]+$/, "")}" class="tabcontent"><h3>${filePath.replace(/\.[^/.]+$/, "")}</h3><pre id="${'tab'+index}"></pre></div>`
                 const tempTabContent = document.getElementById('tab'+index);
