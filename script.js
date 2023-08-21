@@ -41,11 +41,17 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => response.json())
             .then(data => {
                 jsonContent.innerHTML = '<h3>Packages</h3>';
-                jsonContent.innerHTML += '<table><tr><th>Packages</th><th>Domain</th></tr>';
+                const tbl =document.createElement('table');
+                tbl.style.width = '100px';
+                tbl.style.border = '1px solid black';
+
                 data.packageDirectories.forEach((package)=> {
-                    jsonContent.innerHTML += `<tr><td>${package.package}</td><td></td></tr>`;
+                    const tr = tbl.insertRow();
+                    const td = tr.insertCell;
+                    td.appendChild(document.createTextNode(`${package.package}`));
+                    td.style.border = '1px solid black';
                 });
-                jsonContent.innerHTML += `</table>`;
+                body.appendChild(tbl);
                 //const formattedJSON = JSON.stringify(data.packageDirectories, null, 2);
                 //jsonContent.textContent = formattedJSON;
             })
