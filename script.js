@@ -14,8 +14,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const reldefs = readRelDefFolder('releasedefinitions');
             console.log(reldefs)
             console.log(reldefs[0])
-            for( const [index, value] of reldefs){
-                const filePath = value.path;
+            const fileArr = ['orde-cl.yml','orde-loan-servicing.yml']
+            for( const [index, value] of fileArr){
+                const filePath = value;
                 tabContainer.innerHTML += `<div id="${filePath.replace(/\.[^/.]+$/, "")}" class="tabcontent"><h3>${filePath.replace(/\.[^/.]+$/, "")}</h3><pre id="${'tab'+index}"></pre></div>`
                 const tempTabContent = document.getElementById('tab'+index);
                 fetchReleaseDef('releasedefinitions/'+filePath, tempTabContent);
