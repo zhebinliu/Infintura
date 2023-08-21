@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    function readRelDefFolder(dir) {
+    async function readRelDefFolder(dir) {
         const url = `https://api.github.com/repos/zhebinliu/infintura/git/trees/main`;
         const list = await fetch(url).then(res => res.json());
         const dir = list.tree.find(node => node.path === dir);
