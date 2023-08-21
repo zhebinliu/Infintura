@@ -2,8 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const toggleButton = document.getElementById('toggleButton');
     const outputContainer = document.getElementById('outputContainer');
     const jsonContent = document.getElementById('jsonContent');
-    const ordeClContent = document.getElementById('orde-cl-context');
-    const ordeLoanServicingContent = document.getElementById('orde-loan-servicing-context');
     const tabNavi = document.getElementById('tab-navi');
     const tabContainer = document.getElementById('tabContainer');
 
@@ -45,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 jsonContent.innerHTML = '<h3>Packages</h3>';
                 jsonContent.innerHTML += '<table><tr><th>Packages</th><th>Domain</th></tr>';
                 data.packageDirectories.forEach((package)=> {
-                    jsonContent.innerHTML += `<tr><td>${package}</td><td></td></tr>`;
+                    jsonContent.innerHTML += `<tr><td>${package.package}</td><td></td></tr>`;
                 });
                 jsonContent.innerHTML += `</table>`;
                 //const formattedJSON = JSON.stringify(data.packageDirectories, null, 2);
