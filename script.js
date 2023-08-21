@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const fileArr = ['orde-cl.yml','orde-loan-servicing.yml']
             for( const index in fileArr){
                 const filePath = fileArr[index];
+                tabNavi.innerHTML += `<button class="tablinks" onclick="openYaml(event, '${filePath.replace(/\.[^/.]+$/, "")}')">${filePath.replace(/\.[^/.]+$/, "")}</button>`
                 tabContainer.innerHTML += `<div id="${filePath.replace(/\.[^/.]+$/, "")}" class="tabcontent"><h3>${filePath.replace(/\.[^/.]+$/, "")}</h3><pre id="${'tab'+index}"></pre></div>`
                 const tempTabContent = document.getElementById('tab'+index);
                 fetchReleaseDef('releasedefinitions/'+filePath, tempTabContent);
