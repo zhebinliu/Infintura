@@ -51,9 +51,11 @@ document.addEventListener('DOMContentLoaded', function() {
         //console.log(includeOnlyArtifacts)
         
         if (Array.isArray(includeOnlyArtifacts) && includeOnlyArtifacts.length > 0) {
-            includeOnlyArtifacts.forEach((package)=> {
-                xmlContent.textContent += package +'\n';
-            });
+            const tableRows = includeOnlyArtifacts.map(package => `<tr><td>${package}</td></tr>`).join('');
+            xmlContent.innerHTML += `<table>${tableRows}</table>`;
+            //includeOnlyArtifacts.forEach((package)=> {
+            //    xmlContent.textContent += package +'\n';
+            //});
             //xmlContent.innerHTML += `<ul>${includeOnlyArtifacts.map(name => `<li>${name}</li>`).join('')}</ul>`;
         } else {
             xmlContent.textContent = 'No packages found under includeOnlyArtifacts.';
