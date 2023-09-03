@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     toggleButton.addEventListener('click', function() {
         outputContainer.classList.toggle('hidden');
         if (!outputContainer.classList.contains('hidden')) {
-            await fetchJSON();
+            fetchJSON();
 
         }
     });
