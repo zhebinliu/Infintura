@@ -56,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     const td2 = tr.insertCell();
                     td.appendChild(document.createTextNode(`${package.package}`));
                     td.style.border = '1px solid black';
+                    td2.style.border = '1px solid black';
                 });
                 jsonContent.appendChild(tbl);
                 //const formattedJSON = JSON.stringify(data.packageDirectories, null, 2);
