@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function fetchJSON() {
+    async function fetchJSON() {
         fetch('sfdx-project.json')
             .then(response => response.json())
             .then(data => {
