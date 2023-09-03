@@ -1,4 +1,3 @@
-document.addEventListener('DOMContentLoaded', function() {
     const outputContainer = document.getElementById('outputContainer');
     const jsonContent = document.getElementById('jsonContent');
     const tabNavi = document.getElementById('tab-navi');
@@ -92,7 +91,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     
-});
 
 function openYaml(evt, domain) {
     // Declare all variables
