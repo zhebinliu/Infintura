@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const parsedYAML = jsyaml.load(ymlData); 
         const includeOnlyArtifacts = parsedYAML.includeOnlyArtifacts;
         console.log(includeOnlyArtifacts);
-        container.innerHTML = ''
+        container.innerHTML = `<div>Total ${includeOnlyArtifacts.length} packages in this release definition file</div><button id=${tabName} type="button">New Release</button>`
         //console.log(includeOnlyArtifacts)
         if (Array.isArray(includeOnlyArtifacts) && includeOnlyArtifacts.length > 0) {
             includeOnlyArtifacts.forEach((package)=> {
