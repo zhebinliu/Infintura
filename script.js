@@ -9,19 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
         outputContainer.classList.toggle('hidden');
         if (!outputContainer.classList.contains('hidden')) {
             await fetchJSON();
-            const reldefs = readRelDefFolder('releasedefinitions');
-            console.log(reldefs)
-            console.log(reldefs[0])
-            tabNavi.innerHTML = ''
-            const fileArr = ['orde-cl.yml','orde-loan-servicing.yml']
-            for( const index in fileArr){
-                const filePath = fileArr[index];
-                const tabName = filePath.replace(/\.[^/.]+$/, "")
-                tabNavi.innerHTML += `<button class="tablinks" onclick="openYaml(event, '${tabName}')">${tabName}</button>`
-                tabContainer.innerHTML += `<div id="${tabName}" class="tabcontent"><pre id="${'tab-'+tabName}"></pre></div>`
-                const tempTabContent = document.getElementById('tab-'+tabName);
-                fetchReleaseDef('releasedefinitions/'+filePath, tabName);
-            }
 
         }
     });
@@ -58,8 +45,19 @@ document.addEventListener('DOMContentLoaded', function() {
                     td2.id = `domain-${package.package}`;
                 });
                 jsonContent.appendChild(tbl);
-                //const formattedJSON = JSON.stringify(data.packageDirectories, null, 2);
-                //jsonContent.textContent = formattedJSON;
+                const reldefs = readRelDefFolder('releasedefinitions');
+                console.log(reldefs)
+                console.log(reldefs[0])
+                tabNavi.innerHTML = ''
+                const fileArr = ['orde-cl.yml','orde-loan-servicing.yml']
+                for( const index in fileArr){
+                    const filePath = fileArr[index];
+                    const tabName = filePath.replace(/\.[^/.]+$/, "")
+                    tabNavi.innerHTML += `<button class="tablinks" onclick="openYaml(event, '${tabName}')">${tabName}</button>`
+                    tabContainer.innerHTML += `<div id="${tabName}" class="tabcontent"><pre id="${'tab-'+tabName}"></pre></div>`
+                    const tempTabContent = document.getElementById('tab-'+tabName);
+                    fetchReleaseDef('releasedefinitions/'+filePath, tabName);
+                }
             })
             .catch(error => {
                 console.error('Error fetching JSON:', error);
