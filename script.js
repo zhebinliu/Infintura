@@ -90,6 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
             includeOnlyArtifacts.forEach((package)=> {
                 container.innerHTML += `<div>${package}</div>`;
             });
+            console.log(container)
             //xmlContent.innerHTML += `<ul>${includeOnlyArtifacts.map(name => `<li>${name}</li>`).join('')}</ul>`;
         } else {
             container.textContent = 'No packages found under includeOnlyArtifacts.';
