@@ -5,6 +5,9 @@
     float: left;
     width: 50%;
 }
+.html {
+  font-family: sans-serif;
+}
   
   /* Clear floats after the columns */
 .row:after {
