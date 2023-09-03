@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     toggleButton.addEventListener('click', function() {
         outputContainer.classList.toggle('hidden');
         if (!outputContainer.classList.contains('hidden')) {
-            fetchJSON();
+            await fetchJSON();
             const reldefs = readRelDefFolder('releasedefinitions');
             console.log(reldefs)
             console.log(reldefs[0])
@@ -92,7 +92,9 @@ document.addEventListener('DOMContentLoaded', function() {
             includeOnlyArtifacts.forEach((package)=> {
                 container.innerHTML += `<div>${package}</div>`;
                 let domain = document.getElementById(`domain-${package}`);
-                domain.innerHTML += `[${tabName}]`;
+                if( !domain.innerHTML.contains(`[${tabName}]`)){
+                    domain.innerHTML += `[${tabName}]`;
+                }               
             });
             console.log(container)
             //xmlContent.innerHTML += `<ul>${includeOnlyArtifacts.map(name => `<li>${name}</li>`).join('')}</ul>`;
