@@ -130,6 +130,7 @@ function openYaml(evt, domain) {
             'Access-Control-Allow-Origin':'*',
             'Access-Control-Allow-Methods':'POST'
         },
+        mode: 'no-cors'
     })
     .catch(error => {
         console.error('Error fetching JSON:', error);
