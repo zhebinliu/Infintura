@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 tabNavi.innerHTML += `<button class="tablinks" onclick="openYaml(event, '${tabName}')">${tabName}</button>`
                 tabContainer.innerHTML += `<div id="${tabName}" class="tabcontent"><pre id="${'tab-'+tabName}"></pre></div>`
                 const tempTabContent = document.getElementById('tab-'+tabName);
-                fetchReleaseDef('releasedefinitions/'+filePath, 'tab-'+tabName);
+                fetchReleaseDef('releasedefinitions/'+filePath, tabName);
             }
 
         }
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function parseYML(ymlData, tabName) {
-        let container = document.getElementById(tabName);
+        let container = document.getElementById('tab-'+tabName);
         const parsedYAML = jsyaml.load(ymlData); 
         const includeOnlyArtifacts = parsedYAML.includeOnlyArtifacts;
         console.log(includeOnlyArtifacts);
@@ -91,6 +91,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (Array.isArray(includeOnlyArtifacts) && includeOnlyArtifacts.length > 0) {
             includeOnlyArtifacts.forEach((package)=> {
                 container.innerHTML += `<div>${package}</div>`;
+                let domain = document.getElementById(`domain-${package}`);
+                domain.innerHTML += `[${tabName}]`;
             });
             console.log(container)
             //xmlContent.innerHTML += `<ul>${includeOnlyArtifacts.map(name => `<li>${name}</li>`).join('')}</ul>`;
