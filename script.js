@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 tabNavi.innerHTML += `<button class="tablinks" onclick="openYaml(event, '${tabName}')">${tabName}</button>`
                 tabContainer.innerHTML += `<div id="${tabName}" class="tabcontent"><pre id="${'tab-'+tabName}"></pre></div>`
                 const tempTabContent = document.getElementById('tab-'+tabName);
-                fetchReleaseDef('releasedefinitions/'+filePath, tempTabContent);
+                fetchReleaseDef('releasedefinitions/'+filePath, document.getElementById('tab-'+tabName));
             }
 
         }
