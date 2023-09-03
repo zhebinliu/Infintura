@@ -46,8 +46,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 jsonContent.appendChild(tbl);
                 const reldefs = readRelDefFolder('releasedefinitions');
-                console.log(reldefs)
-                console.log(reldefs[0])
                 tabNavi.innerHTML = ''
                 const fileArr = ['orde-cl.yml','orde-loan-servicing.yml']
                 for( const index in fileArr){
@@ -90,9 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
             includeOnlyArtifacts.forEach((package)=> {
                 container.innerHTML += `<div>${package}</div>`;
                 let domain = document.getElementById(`domain-${package}`);
-                if( !domain.innerHTML.contains(`[${tabName}]`)){
-                    domain.innerHTML += `[${tabName}]`;
-                }               
+                domain.innerHTML += `[${tabName}]`;
             });
             console.log(container)
             //xmlContent.innerHTML += `<ul>${includeOnlyArtifacts.map(name => `<li>${name}</li>`).join('')}</ul>`;
