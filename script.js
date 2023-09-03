@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const parsedYAML = jsyaml.load(ymlData); 
         const includeOnlyArtifacts = parsedYAML.includeOnlyArtifacts;
         console.log(includeOnlyArtifacts);
-        container.innerHTML = `<div>Total ${includeOnlyArtifacts.length} packages in this release definition file</div><button id=${tabName} type="button">New Release</button>`
+        container.innerHTML = `<div>Total ${includeOnlyArtifacts.length} packages in this release definition file</div><button id=${tabName} type="button" onclick="createRelease(event,'${tabName}')">New Release</button>`
         //console.log(includeOnlyArtifacts)
         if (Array.isArray(includeOnlyArtifacts) && includeOnlyArtifacts.length > 0) {
             includeOnlyArtifacts.forEach((package)=> {
@@ -120,4 +120,16 @@ function openYaml(evt, domain) {
     // Show the current tab, and add an "active" class to the button that opened the tab
     document.getElementById(domain).style.display = "block";
     evt.currentTarget.className += " active";
+  }
+
+  function createRelease(evt, domain){
+    fetch(`https://github.com/zhebinliu/Infintura/issues/new?title=Create+release+for+${domain}&body=Describe+the+problem`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'text/html; charset=utf-8'
+        },
+    })
+    .catch(error => {
+        console.error('Error fetching JSON:', error);
+    });
   }
