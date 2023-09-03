@@ -126,7 +126,9 @@ function openYaml(evt, domain) {
     fetch(`https://github.com/zhebinliu/Infintura/issues/new?title=Create+release+for+${domain}&body=Describe+the+problem`, {
         method: 'POST',
         headers: {
-            'Content-Type': 'text/html; charset=utf-8'
+            'Content-Type': 'text/html; charset=utf-8',
+            'Access-Control-Allow-Origin':'*',
+            'Access-Control-Allow-Methods':'POST'
         },
     })
     .catch(error => {
