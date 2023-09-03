@@ -55,8 +55,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     const td = tr.insertCell();
                     const td2 = tr.insertCell();
                     td.appendChild(document.createTextNode(`${package.package}`));
-                    td.style.border = '1px solid black';
-                    td2.style.border = '1px solid black';
                 });
                 jsonContent.appendChild(tbl);
                 //const formattedJSON = JSON.stringify(data.packageDirectories, null, 2);
@@ -85,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function parseYML(ymlData, container) {
         const parsedYAML = jsyaml.load(ymlData); 
         const includeOnlyArtifacts = parsedYAML.includeOnlyArtifacts;
+        console.log(includeOnlyArtifacts);
         container.innerHTML = ''
         //console.log(includeOnlyArtifacts)
         if (Array.isArray(includeOnlyArtifacts) && includeOnlyArtifacts.length > 0) {
