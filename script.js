@@ -123,7 +123,8 @@ function openYaml(evt, domain) {
   }
 
   function createRelease(evt, domain){
-    fetch(`https://github.com/zhebinliu/Infintura/issues/new?title=Create+release+for+${domain}&body=Describe+the+problem`, {
+    window.open(`https://github.com/zhebinliu/Infintura/issues/new?title=Create+release+for+${domain}&body=Describe+the+problem`, "_blank");
+    /*fetch(`https://github.com/zhebinliu/Infintura/issues/new?title=Create+release+for+${domain}&body=Describe+the+problem`, {
         method: 'POST',
         headers: {
             'Content-Type': 'text/html; charset=utf-8',
@@ -134,5 +135,5 @@ function openYaml(evt, domain) {
     })
     .catch(error => {
         console.error('Error fetching JSON:', error);
-    });
+    });*/
   }
