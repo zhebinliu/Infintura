@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     const td = tr.insertCell();
                     const td2 = tr.insertCell();
                     td.appendChild(document.createTextNode(`${package.package}`));
+                    td2.id = `domain-${package.package}`;
                 });
                 jsonContent.appendChild(tbl);
                 //const formattedJSON = JSON.stringify(data.packageDirectories, null, 2);
