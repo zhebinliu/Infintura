@@ -1,23 +1,30 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleButton = document.getElementById('toggleButton');
     const outputContainer = document.getElementById('outputContainer');
     const jsonContent = document.getElementById('jsonContent');
     const tabNavi = document.getElementById('tab-navi');
     const tabContainer = document.getElementById('tabContainer');
     
-    fetchJSON();
-    const reldefs = readRelDefFolder('releasedefinitions');
-    console.log(reldefs)
-    console.log(reldefs[0])
-    tabNavi.innerHTML = ''
-    const fileArr = ['orde-cl.yml','orde-loan-servicing.yml']
-    for( const index in fileArr){
-        const filePath = fileArr[index];
-        const tabName = filePath.replace(/\.[^/.]+$/, "")
-        tabNavi.innerHTML += `<button class="tablinks" onclick="openYaml(event, '${tabName}')">${tabName}</button>`
-        tabContainer.innerHTML += `<div id="${tabName}" class="tabcontent"><pre id="${'tab-'+tabName}"></pre></div>`
-        const tempTabContent = document.getElementById('tab-'+tabName);
-        fetchReleaseDef('releasedefinitions/'+filePath, tempTabContent);
-    }
+    toggleButton.addEventListener('click', function() {
+        outputContainer.classList.toggle('hidden');
+        if (!outputContainer.classList.contains('hidden')) {
+            fetchJSON();
+            const reldefs = readRelDefFolder('releasedefinitions');
+            console.log(reldefs)
+            console.log(reldefs[0])
+            tabNavi.innerHTML = ''
+            const fileArr = ['orde-cl.yml','orde-loan-servicing.yml']
+            for( const index in fileArr){
+                const filePath = fileArr[index];
+                const tabName = filePath.replace(/\.[^/.]+$/, "")
+                tabNavi.innerHTML += `<button class="tablinks" onclick="openYaml(event, '${tabName}')">${tabName}</button>`
+                tabContainer.innerHTML += `<div id="${tabName}" class="tabcontent"><pre id="${'tab-'+tabName}"></pre></div>`
+                const tempTabContent = document.getElementById('tab-'+tabName);
+                fetchReleaseDef('releasedefinitions/'+filePath, tempTabContent);
+            }
 
+        }
+    });
 
     async function readRelDefFolder(directory) {
         const url = `https://api.github.com/repos/zhebinliu/infintura/git/trees/main`;
@@ -91,6 +98,7 @@
     }
 
     
+});
 
 function openYaml(evt, domain) {
     // Declare all variables
